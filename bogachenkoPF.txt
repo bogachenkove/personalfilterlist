@@ -1,0 +1,184 @@
+! Title: bogachenko's Personal Filters
+! Description: bogachenko's Personal Filters to block loading of ads, tracking, annoying and all other unjustified resources. These filters are used by me for uBlock Origin, AdGuard for Windows and AdGuard for Android.
+! Homepage: https://github.com/bogachenko/filterlist
+! RAW: https://raw.githubusercontent.com/bogachenko/filterlist/main/bogachenkoPF.txt
+! License: https://raw.githubusercontent.com/bogachenko/filterlist/main/LICENSE.md
+! Expires: 3 days
+
+! TEST START
+!
+! TEST END
+
+! REMOVEPARAM START
+$removeparam=/^refs?(err?al)?[_=]/
+$removeparam=/^utm_/
+! REMOVEPARAM END
+
+! DOMAINS START
+||imasdk.googleapis.com^$important
+||doubleclick.net^$important
+||adservice.google.*^$important
+||mc.yandex.ru^$important
+||googlesyndication.com^$important
+||google-analytics.com^$important
+||googleadservices.com^$important
+||googletagmanager.com^$important
+||googletagservices.com^$important
+||sentry.io^$important
+||sentry-cdn.com^$important
+||app-measurement.com^$important
+||r3.mail.ru^$important
+||top-fwz1.mail.ru^$important
+||ad.mail.ru^$important
+||trk.mail.ru^$important
+||an.mail.ru^$important
+||reklama.mail.ru^$important
+||an.yandex.ru^$important
+||yabs.yandex.ru^$important
+||appsflyer.com^$important
+||tganalytics.xyz^$important
+||tads.me^$important
+||gameanalytics.com^$important
+||adsgram.ai^$important
+||shavar.services.mozilla.com^$important
+||shavar.prod.mozaws.net^$important
+||tawk.to^$important
+||chatbro.com^$important
+||cackle.me^$important
+||chatango.com^$important
+||chatra.io^$important
+||crash-reports.mozilla.com^$important
+||disqus.com^$important
+||disquscdn.com^$important
+||sharethis.com^$important
+||uptolike.com^$important
+||foquz.ru^$important
+||ext-twitch.tv^$important
+||kaspersky-labs.com^$important
+||kaspersky.com^$important
+||jivo.ru^$important
+||smartscreen.microsoft.com^$important
+||stmtag.ru^$important
+! DOMAINS END
+
+! WHITELIST START
+@@||local.adguard.org^
+@@||injections.adguard.org^
+@@||passport.yandex.net^
+! WHITELIST END
+
+! BAD-FILTERS START
+@@||pagead.l.doubleclick.net^|$badfilter
+@@||www.googleadservices.com^|$badfilter
+@@||track.rutarget.ru^|$badfilter
+@@||s.youtube.com^|$badfilter
+@@||redirect.appmetrica.yandex.com^|$badfilter
+@@||imasdk.googleapis.com^|$badfilter
+@@||googleadapis.l.google.com^|$badfilter
+@@||launches.appsflyer.com^|$badfilter
+@@||app.adjust.com^|$badfilter
+! BAD-FILTERS END
+
+! BASIC FILTERS START
+/(?=(?:.*?&(manufacturer|model|platform|(device|partner|referrer|app|client)[-_]?id|uuid|ver(sion)?|name)=){3,})/
+/(?<=^|[?/.=_-])rekl?(ama?)?(?=$|[?/.=_-])/
+/(?<=^|[?/.=_-])ad[vsx]?((is)?er?(v?e?)?t?i?((si)?ng|ser?(ment)?)?)?(?=$|[?/.=_-])/$domain=~twitch.tv|~tiktok.com|~aliexpress.ru|~reddit.com|~instagram.com
+/(?<=^|[?/.=_-])me?tr[ie]?[ck][asx]?(?=$|[?/.=_-])/
+/(?<=^|[?/.=_-])log(ger|s)?(?=$|[?/.=_-])/$domain=~cloudflare.com|~flightradar24.com|~reddit.com
+/(?<=^|[?/.=_-])counter(?=$|[?/.=_-])/$domain=~youtube.com
+/\/(gen(erate)?|client|log|stream|device|player|live|csi|error)_?204/
+||null^
+||undefined^
+||burp^
+||vast.
+||sentry.
+|http*:*?sentry_key=
+|http*:*?sentry_version=
+|http*:*?payload=$domain=~krea.ai
+|http*:*/prerolls.
+|http*:*/adtech-
+|http*:*/pagead/
+|http*:*/videoads/
+|http*:*/adfox/
+! BASIC END START
+
+! APP START
+/^(?!.*(s(potify)?(cdn)?\.com?|g(oogle|static)\.com|recaptcha\.net)).*$/$important,app=Spotify.exe|com.spotify.music
+! APP END
+
+! IMAGES START
+/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/$image,domain=~pornhub.com
+! IMAGES END
+
+! COSMETIC RULES START
+##[src^="//ads."]
+##[src^="//ad."]
+youtube.com##.ytp-endscreen-content,.attached-message,.sponsorThumbnailLabel,.ytp-paid-content-overlay,.undefined > yt-button-shape,.ytp-ce-element-show,.ytp-scrubber-container,.ytp-fullscreen-grid
+ya.ru##SplashscreenSystemWindows:has-text(Яндекс Браузер)
+ya.ru##[id*="Distribution"],[class*="Distribution"]
+! COSMETIC RULES END
+
+! CONTENT SECURITY POLICY START
+||twitch.tv^$important,csp=default-src 'self' 'unsafe-inline' 'unsafe-eval' wss: blob: data: *.jtvnw.net *.ttvnw.net *.twitchcdn.net *.twitch.tv *.facebook.com *.facebook.net *.recaptcha.net *.google.com *.gstatic.com *.algolia.net local.adguard.org injections.adguard.org *.cloudfront.net *.fastly.net *.live-video.net;
+||youtube.com^$important,csp=default-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: *.ggpht.com *.googlevideo.com *.youtube.com *.ytimg.com *.googleusercontent.com *.google.com *.googleapis.com *.gstatic.com local.adguard.org injections.adguard.org;
+! CONTENT SECURITY POLICY END
+
+! SCRIPT START
+|http*:*/endscreen.js$script,domain=youtube.com|youtu.be|youtube-nocookie.com
+||google.com/gsi/$script
+! SCRIPT END
+
+! REPLACE START
+||yandex.ru^$replace=/banners_carousel//,domain=market.yandex.ru|eda.yandex.ru
+||yandex.ru^$replace=/promos?(t(ed?|i(ng|ons?)))?//,domain=market.yandex.ru|eda.yandex.ru
+||yandex.ru^$replace=/ad[vsx]?(er(v?e?)?t?i?((si)?ng|ser?(ment)?)?)?//,domain=market.yandex.ru|eda.yandex.ru|dzen.ru
+||yandex.ru^$replace=/analy(s(er)?i|tic|ze)?s?t?//,domain=market.yandex.ru|eda.yandex.ru
+||yandex.ru^$replace=/me?tr[ie]?[ck][asx]?//,domain=market.yandex.ru|eda.yandex.ru|dzen.ru
+! REPLACE END
+
+! OTHER START
+||spotify.com/sponsoredplaylist/$important
+||yandex.ru/an/$important
+||yandex.ru/appcry$important
+||yandex.ru/clck/click$important
+||yandex.net/*/experiments$important
+||yandex.net/report|$important
+||yandex.net/graphql|$important
+||yandex.ru/*/welcome-features|$important
+||browser.yandex.ru/uma_proto|$important
+||google.com/mail/adsfe/$important
+! OTHER END
+
+! TRASH START
+||lucky-gift.org^
+||tel1mekar.com^
+||xuv.etherscan.com^
+||ban.etherscan.com^
+||eas.etherscan.com^
+||bidajet.info^
+market.yandex.ru##[id*="heroBannerCarousel"]
+bscscan.com,lineascan.build,arbiscan.io,basescan.org,etherscan.io,polygonscan.com,scrollscan.com##[id*="wrapper-sevio-"]
+bscscan.com,lineascan.build,arbiscan.io,basescan.org,etherscan.io,polygonscan.com,scrollscan.com##.card > div:has-text(/Sponsored/)
+bscscan.com,lineascan.build,arbiscan.io,basescan.org,etherscan.io,polygonscan.com,gnosisscan.io,cronoscan.com,moonscan.io,celoscan.io,blastscan.io,mantlescan.xyz,scrollscan.com,berascan.com##.card > [class*="opacity"]
+translate.yandex.ru###textbox > .ya-gpt-container,.social-links
+basescan.org,scrollscan.com##[class*="muted"]:has-text(/Sponsored|Featured/)
+basescan.org,scrollscan.com##[id*="AdResult"]
+basescan.org##.scrollbar-custom:has([alt="Ads"])
+basescan.org##.text-muted:has([src*="xuv.etherscan"])
+polygonscan.com##.text-muted:has([src*="ban.etherscan"])
+scrollscan.com##.text-muted:has([src*="eas.etherscan"])
+/\/([a-z0-9]{7}\/){2}/$script,domain=ebalovo.*
+spotify.com##div.ReactModalPortal
+twitch.tv##[class*="bits-leaderboard"],[class*="channel-leaderboard-header"]
+twitch.tv##.chat-room__content > :has([aria-label="Развернуть рейтинг лучших дарителей в верхней части чата"])
+||2ch.hk/static/js/events/chikatilo.js$script
+||2ch.org/static/js/events/SleepingBusinessman.js$script
+||2ch.hk/static/js/events/snow_miner_anon_ne_podozrevaet.js$script
+||yastatic.net/share$script
+||yandex.ru/ads/$important
+||mail.ru/*/fast-slot.js$replace=/&&t.mimic.setup.broker//,badfilter
+||mail.ru^$~script,~xmlhttprequest,replace=/broker:/_broker:/,badfilter
+://mail.ru^$~script,~xmlhttprequest,replace=/a=mr.mimicEnabled?/a=mr.mimic_Enabled?/,badfilter
+@@77.88.21.122$network,app=ru.yandex.rasp,badfilter
+vk.com##[class*="Garland"]
+! TRASH END

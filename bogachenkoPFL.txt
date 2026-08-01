@@ -64,19 +64,10 @@ $removeparam=/^utm_/
 ! WHITELIST START
 @@||local.adguard.org^
 @@||injections.adguard.org^
-@@||passport.yandex.net^
 ! WHITELIST END
 
 ! BAD-FILTERS START
-@@||pagead.l.doubleclick.net^|$badfilter
-@@||www.googleadservices.com^|$badfilter
-@@||track.rutarget.ru^|$badfilter
-@@||s.youtube.com^|$badfilter
-@@||redirect.appmetrica.yandex.com^|$badfilter
-@@||imasdk.googleapis.com^|$badfilter
-@@||googleadapis.l.google.com^|$badfilter
-@@||launches.appsflyer.com^|$badfilter
-@@||app.adjust.com^|$badfilter
+!
 ! BAD-FILTERS END
 
 ! BASIC FILTERS START
@@ -92,14 +83,10 @@ $removeparam=/^utm_/
 ||burp^
 ||vast.
 ||sentry.
+||disabled.invalid^
 |http*:*?sentry_key=
 |http*:*?sentry_version=
 |http*:*?payload=$domain=~krea.ai
-|http*:*/prerolls.
-|http*:*/adtech-
-|http*:*/pagead/
-|http*:*/videoads/
-|http*:*/adfox/
 ! BASIC END START
 
 ! APP START
@@ -107,7 +94,7 @@ $removeparam=/^utm_/
 ! APP END
 
 ! IMAGES START
-/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/$image,domain=~pornhub.com
+/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/
 ! IMAGES END
 
 ! COSMETIC RULES START
@@ -129,24 +116,12 @@ ya.ru##[id*="Distribution"],[class*="Distribution"]
 ! SCRIPT END
 
 ! REPLACE START
-||yandex.ru^$replace=/banners_carousel//,domain=market.yandex.ru|eda.yandex.ru
-||yandex.ru^$replace=/promos?(t(ed?|i(ng|ons?)))?//,domain=market.yandex.ru|eda.yandex.ru
-||yandex.ru^$replace=/ad[vsx]?(er(v?e?)?t?i?((si)?ng|ser?(ment)?)?)?//,domain=market.yandex.ru|eda.yandex.ru|dzen.ru
-||yandex.ru^$replace=/analy(s(er)?i|tic|ze)?s?t?//,domain=market.yandex.ru|eda.yandex.ru
-||yandex.ru^$replace=/me?tr[ie]?[ck][asx]?//,domain=market.yandex.ru|eda.yandex.ru|dzen.ru
+!
 ! REPLACE END
 
 ! OTHER START
 ||spotify.com/sponsoredplaylist/$important
 ||yandex.ru/an/$important
-||yandex.ru/appcry$important
-||yandex.ru/clck/click$important
-||yandex.net/*/experiments$important
-||yandex.net/report|$important
-||yandex.net/graphql|$important
-||yandex.ru/*/welcome-features|$important
-||browser.yandex.ru/uma_proto|$important
-||google.com/mail/adsfe/$important
 ! OTHER END
 
 ! TRASH START
@@ -181,4 +156,5 @@ twitch.tv##.chat-room__content > :has([aria-label="Развернуть рейт
 ://mail.ru^$~script,~xmlhttprequest,replace=/a=mr.mimicEnabled?/a=mr.mimic_Enabled?/,badfilter
 @@77.88.21.122$network,app=ru.yandex.rasp,badfilter
 vk.com##[class*="Garland"]
+@@||eda.yandex.ru/*&is_ad=true&$xhr
 ! TRASH END

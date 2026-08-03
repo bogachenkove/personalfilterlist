@@ -12,6 +12,7 @@
 ! BADFILTER START
 @@||www.googleadservices.com^|$badfilter
 @@||app.adjust.com^|$badfilter
+@@|adsterra.com^|$badfilter
 ! BADFILTER END
 
 ! REMOVEPARAM START
@@ -25,7 +26,6 @@ $removeparam=/^utm_/
 ||cackle.me^$important
 ||chatango.com^$important
 ||chatra.io^$important
-||crash-reports.mozilla.com^$important
 ||disqus.com^$important
 ||disquscdn.com^$important
 ||sharethis.com^$important
@@ -43,7 +43,7 @@ $removeparam=/^utm_/
 ! WHITELIST END
 
 ! BASIC FILTERS START
-/(?=(?:.*?&(manufacturer|model|platform|(device|partner|referrer|app|client)[-_]?id|uuid|ver(sion)?|name)=){3,})/
+/(?=(?:.*?&(manufacturer|model|platform|(device|partner|referrer|app|client)[-_]?id|uuid|ver(sion)?|name)=){3,})/$domain=~aliexpress.ru
 /(?<=^|[?/.=_-])rekl?(ama?)?(?=$|[?/.=_-])/
 /(?<=^|[?/.=_-])ad[vsx]?((is)?er?(v?e?)?t?i?((si)?ng|ser?(ment)?)?)?(?=$|[?/.=_-])/$domain=~twitch.tv|~tiktok.com|~aliexpress.ru|~reddit.com|~instagram.com
 /(?<=^|[?/.=_-])me?tr[ie]?[ck][asx]?(?=$|[?/.=_-])/

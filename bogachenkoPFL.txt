@@ -35,6 +35,7 @@ $removeparam=/^utm_/
 ||kaspersky-labs.com^$important
 ||kaspersky.com^$important
 ||jivo.ru^$important
+||crisp.chat^$important
 ! DOMAINS END
 
 ! WHITELIST START
@@ -47,7 +48,7 @@ $removeparam=/^utm_/
 /(?<=^|[?/.=_-])rekl?(ama?)?(?=$|[?/.=_-])/
 /(?<=^|[?/.=_-])ad[vsx]?((is)?er?(v?e?)?t?i?((si)?ng|ser?(ment)?)?)?(?=$|[?/.=_-])/$domain=~twitch.tv|~tiktok.com|~aliexpress.ru|~reddit.com|~instagram.com
 /(?<=^|[?/.=_-])me?tr[ie]?[ck][asx]?(?=$|[?/.=_-])/
-/(?<=^|[?/.=_-])log(ger|s)?(?=$|[?/.=_-])/$domain=~cloudflare.com|~flightradar24.com|~reddit.com
+/(?<=^|[?/.=_-])log(ger|s)?(?=$|[?/.=_-])/$domain=~cloudflare.com|~flightradar24.com|~reddit.com|~adguard-dns.io
 /(?<=^|[?/.=_-])counter(?=$|[?/.=_-])/$domain=~youtube.com
 /\/(gen(erate)?|client|log|stream|device|player|live|csi|error)_?204/
 ||null^
@@ -66,7 +67,7 @@ $removeparam=/^utm_/
 ! APP END
 
 ! IMAGES START
-/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/
+/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/$domain=~twitch.tv
 ! IMAGES END
 
 ! COSMETIC RULES START

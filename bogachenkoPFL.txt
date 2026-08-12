@@ -18,6 +18,10 @@
 ! REMOVEPARAM START
 $removeparam=/^refs?(err?al)?[_=]/
 $removeparam=/^utm_/
+$removeparam=/^tgclid=/
+$removeparam=/^ad(?:[svx]|vert(?:is(?:ing|ement)?|ing)?)?[_=]/
+$removeparam=/^promos?(t(ed?|i(ng|ons?)))?[_=]/
+$removeparam=/^analyt(?:ic[as]?|ical)?[_=]/
 ! REMOVEPARAM END
 
 ! DOMAINS START
@@ -67,7 +71,7 @@ $removeparam=/^utm_/
 ! APP END
 
 ! IMAGES START
-/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/$domain=~twitch.tv
+/(?<=^|[&?/.=_-])pi?x(el)?s?(?=$|[&?/.=_-])/$domain=~twitch.tv|~github.com
 ! IMAGES END
 
 ! COSMETIC RULES START

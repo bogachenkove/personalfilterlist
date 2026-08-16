@@ -35,11 +35,16 @@ $removeparam=/^analyt(?:ic[as]?|ical)?[_=]/
 ||sharethis.com^$important
 ||uptolike.com^$important
 ||foquz.ru^$important
-||ext-twitch.tv^$important
 ||kaspersky-labs.com^$important
 ||kaspersky.com^$important
 ||jivo.ru^$important
 ||crisp.chat^$important
+||extension-files.twitch.tv^$important
+||extensions.twitch.tv^$important
+||ext-cdn.jtvnw.net^$important
+||ext-twitch.tv^$important
+||spade.twitch.tv^$important
+||stats.live-video.net^$important
 ! DOMAINS END
 
 ! WHITELIST START
@@ -79,7 +84,8 @@ $removeparam=/^analyt(?:ic[as]?|ical)?[_=]/
 ##[src^="//ad."]
 youtube.com##.ytp-endscreen-content,.attached-message,.sponsorThumbnailLabel,.ytp-paid-content-overlay,.undefined > yt-button-shape,.ytp-ce-element-show,.ytp-scrubber-container,.ytp-fullscreen-grid
 ya.ru##SplashscreenSystemWindows:has-text(Яндекс Браузер)
-ya.ru##[id*="Distribution"],[class*="Distribution"]
+ya.ru,yandex.*##[id*="Distribution"],[class*="Distribution"]
+!yandex.*##[id*="DistributionPopupDesktopSystemWindowsSplit"],.DistributionLinkBro
 ! COSMETIC RULES END
 
 ! CONTENT SECURITY POLICY START
@@ -123,6 +129,7 @@ scrollscan.com##.text-muted:has([src*="eas.etherscan"])
 spotify.com##div.ReactModalPortal
 twitch.tv##[class*="bits-leaderboard"],[class*="channel-leaderboard-header"]
 twitch.tv##.chat-room__content > :has([aria-label="Развернуть рейтинг лучших дарителей в верхней части чата"])
+*/twitch-ext.min.js$script
 ||2ch.hk/static/js/events/chikatilo.js$script
 ||2ch.org/static/js/events/SleepingBusinessman.js$script
 ||2ch.hk/static/js/events/snow_miner_anon_ne_podozrevaet.js$script
@@ -133,5 +140,7 @@ twitch.tv##.chat-room__content > :has([aria-label="Развернуть рейт
 ://mail.ru^$~script,~xmlhttprequest,replace=/a=mr.mimicEnabled?/a=mr.mimic_Enabled?/,badfilter
 @@77.88.21.122$network,app=ru.yandex.rasp,badfilter
 vk.com##[class*="Garland"]
+@@||catalog.api.2gis.ru/*.ads.$xhr
 @@||eda.yandex.ru/*&is_ad=true&$xhr
+*#@#+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo\b.+?base64 -d\b|^cmd \/c\b.+?\bcurl .+?(\.exe|\.bat)\b|^cmd\b.+?\bfor \/f\b.+?\bdelims\b.+?\bpow\b|^powershell.+?-w(indowStyle)? h(idden)?\b|^powershell.+?-W H(idden)?\b|^powershell.+?-NoP\b|^powershell.+?-ep bypass\b|^powershell.+?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|powershell.+?\biex\(|powershell.+?Invoke-Expression|powershell.+?Invoke-WebRequest|powershell.+?-UseBasicParsing|\biwr\b.+?-OutFile\b.+?\$env:(TEMP|TMP)\b|\$env:(TEMP|TMP)\b[\/\\].+?\.(exe|bat|ps1|cmd|vbs)\b|\bstart \$env:(TEMP|TMP)\b|%LOCALAPPDATA%\\.+?\.(exe|bat|ps1|cmd|vbs)\b|%APPDATA%\\.+?\.(exe|bat|ps1|cmd|vbs)\b|\[Convert\]::FromBase64String|\[Text\.Encoding\]::UTF8\.GetString|\btry\b\s*\{\s*\birm\b.+?\}\s*\bcatch\b.+?\{\s*\biex\b|Add-Type -As System\.Windows\.Forms|Windows\.Forms\.MessageBox|\bcmd.+?\/c.+?-nop\b.+?\biex\(|\b(cmd|powershell)\b.+?recaptcha|\b(cmd|powershell)\b.+?#(Verification|   )|\b(cmd|powershell)\b.+?   #|^osascript |^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo\b.+?base64 (--decode|-D|-d)\b.+?\| (bash|sh)\b|openssl base64 -d|chmod \+x.+?&&|\b(bash|sh|osascript)\b.+?recaptcha|\b(bash|sh|osascript)\b.+?#(Verification|   )|\b(bash|sh|osascript)\b.+?   #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|\/tmp\/.+?chmod \+x.+?&&|\b(apt(-get)?|dpkg)\b .+?http|^wget -q.+?\.(sh|py|bin|elf)\b|C:\\Windows\\system32\\cmd\.exe.+?powershell/msi, domAlert, Copy-paste blocked - 📋❗ ${text})
 ! TRASH END

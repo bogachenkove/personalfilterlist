@@ -13,6 +13,10 @@
 @@||www.googleadservices.com^|$badfilter
 @@||app.adjust.com^|$badfilter
 @@|adsterra.com^|$badfilter
+@@||app.appsflyer.com^|$badfilter
+@@||tags.crwdcntrl.net^|$badfilter
+@@|cdn.taboola.com^|$badfilter
+@@||pagead.l.doubleclick.net^|$badfilter
 ! BADFILTER END
 
 ! REMOVEPARAM START
@@ -56,8 +60,8 @@ $removeparam=/^analyt(?:ic[as]?|ical)?[_=]/
 /(?=(?:.*?&(manufacturer|model|platform|(device|partner|referrer|app|client)[-_]?id|uuid|ver(sion)?|name)=){3,})/$domain=~aliexpress.ru
 /(?<=^|[?/.=_-])rekl?(ama?)?(?=$|[?/.=_-])/
 /(?<=^|[?/.=_-])ad[vsx]?((is)?er?(v?e?)?t?i?((si)?ng|ser?(ment)?)?)?(?=$|[?/.=_-])/$domain=~twitch.tv|~tiktok.com|~aliexpress.ru|~reddit.com|~instagram.com
-/(?<=^|[?/.=_-])me?tr[ie]?[ck][asx]?(?=$|[?/.=_-])/
-/(?<=^|[?/.=_-])log(ger|s)?(?=$|[?/.=_-])/$domain=~cloudflare.com|~flightradar24.com|~reddit.com|~adguard-dns.io
+/(?<=^|[?/.=_-])me?tr[ie]?[ck][asx]?(?=$|[?/.=_-])/$domain=~github.com
+/(?<=^|[?/.=_-])log(ger|s)?(?=$|[?/.=_-])/$domain=~cloudflare.com|~flightradar24.com|~reddit.com|~adguard-dns.io|~ok.ru|~archive.org
 /(?<=^|[?/.=_-])counter(?=$|[?/.=_-])/$domain=~youtube.com
 /\/(gen(erate)?|client|log|stream|device|player|live|csi|error)_?204/
 ||null^
@@ -68,7 +72,7 @@ $removeparam=/^analyt(?:ic[as]?|ical)?[_=]/
 ||disabled.invalid^
 |http*:*?sentry_key=
 |http*:*?sentry_version=
-|http*:*?payload=$domain=~krea.ai
+|http*:*?payload=$domain=~krea.ai|~github.com
 ! BASIC END START
 
 ! APP START
@@ -114,6 +118,7 @@ ya.ru,yandex.*##[id*="Distribution"],[class*="Distribution"]
 ||ban.etherscan.com^
 ||eas.etherscan.com^
 ||bidajet.info^
+||experimenter.prod.webservices.mozgcp.net^
 market.yandex.ru##[id*="heroBannerCarousel"]
 bscscan.com,lineascan.build,arbiscan.io,basescan.org,etherscan.io,polygonscan.com,scrollscan.com##[id*="wrapper-sevio-"]
 bscscan.com,lineascan.build,arbiscan.io,basescan.org,etherscan.io,polygonscan.com,scrollscan.com##.card > div:has-text(/Sponsored/)

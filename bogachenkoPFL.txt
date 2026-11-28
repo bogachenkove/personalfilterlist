@@ -18,6 +18,11 @@
 @@||tags.crwdcntrl.net^|$badfilter
 @@|cdn.taboola.com^|$badfilter
 @@||pagead.l.doubleclick.net^|$badfilter
+||firefox.settings.services.mozilla.com^$badfilter
+||encrypted-tbn2.gstatic.com^$badfilter
+||encrypted-tbn1.gstatic.com^$badfilter
+||encrypted-tbn3.gstatic.com^$badfilter
+||content-signature-2.cdn.mozilla.net^$badfilter
 ! BADFILTER END
 
 ! REMOVEPARAM START

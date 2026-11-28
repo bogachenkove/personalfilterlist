@@ -11,6 +11,7 @@
 
 ! BADFILTER START
 @@||www.googleadservices.com^|$badfilter
+@@://www.googleadservices.com^|$badfilter
 @@||app.adjust.com^|$badfilter
 @@|adsterra.com^|$badfilter
 @@||app.appsflyer.com^|$badfilter
@@ -99,6 +100,7 @@ ya.ru,yandex.*##[id*="Distribution"],[class*="Distribution"]
 
 ! SCRIPT START
 |http*:*/endscreen.js$script,domain=youtube.com|youtu.be|youtube-nocookie.com
+/[-_/]preroll\.js/$script
 ||google.com/gsi/$script
 ! SCRIPT END
 
@@ -140,9 +142,6 @@ twitch.tv##.chat-room__content > :has([aria-label="Развернуть рейт
 ||2ch.hk/static/js/events/snow_miner_anon_ne_podozrevaet.js$script
 ||yastatic.net/share$script
 ||yandex.ru/ads/$important
-||mail.ru/*/fast-slot.js$replace=/&&t.mimic.setup.broker//,badfilter
-||mail.ru^$~script,~xmlhttprequest,replace=/broker:/_broker:/,badfilter
-://mail.ru^$~script,~xmlhttprequest,replace=/a=mr.mimicEnabled?/a=mr.mimic_Enabled?/,badfilter
 @@77.88.21.122$network,app=ru.yandex.rasp,badfilter
 vk.com##[class*="Garland"]
 @@||catalog.api.2gis.ru/*.ads.$xhr
